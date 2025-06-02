@@ -324,6 +324,7 @@ in
                 command = startScript;
                 # SIGINT (= 2) for faster shutdown: https://www.postgresql.org/docs/current/server-shutdown.html
                 shutdown.signal = 2;
+                shutdown.is_tty = true;
                 readiness_probe = {
                   exec.command = "${config.package}/bin/pg_isready ${lib.concatStringsSep " " pg_isreadyArgs}";
                   initial_delay_seconds = 2;
